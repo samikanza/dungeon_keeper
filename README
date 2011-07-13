@@ -1,0 +1,11 @@
+dungeon_keeper
+==============
+
+This application is a simple rails 3 application that has been written to act as a walkthrough for an introduction to rails course.
+
+The focus has been on showing off rails concepts rather than showing off best practices, so don't take it as a template for how to build a real application.  Although hopefully it's not too shabby.
+
+Easter Egg
+==========
+
+The tests contain many references to dungeons from old computer games.  If you spot the references you win a prize.  The prize is that I will bore you senseless about those games in the pub.

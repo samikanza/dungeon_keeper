@@ -1,0 +1,33 @@
+<h1>Listing Traps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Base damage caused</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+<% if @traps.any? %>
+  <% @traps.each do |trap| %>
+    <%= content_tag_for(:tr, trap) do %>
+      <td><%= trap.name %></td>
+      <td><%= trap.base_damage_caused %></td>
+      <td>
+        <%= actions_menu link_to('Show', trap),
+                         link_to('Edit', edit_trap_path(trap)),
+                         link_to('Destroy', trap, :confirm => 'Are you sure?', :method => :delete) %>
+      </td>
+    <% end %>
+  <% end %>
+<% else %>
+    <tr class="empty">
+      <td colspan="3">There are no traps stored, <%= link_to 'why not add one?', new_trap_path %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= actions_menu link_to('New Trap', new_trap_path) %>

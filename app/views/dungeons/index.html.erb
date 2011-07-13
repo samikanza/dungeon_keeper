@@ -1,0 +1,34 @@
+<h1>Listing Dungeons</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Levels</th>
+      <th>Evil Wizard</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+<% if @dungeons.any? %>
+  <% @dungeons.each do |dungeon| %>
+    <%= content_tag_for(:tr, dungeon) do %>
+      <td><%= dungeon.name %></td>
+      <td><%= dungeon.levels %></td>
+      <td><%= show_evil_wizard_for_dungeon(dungeon) %></td>
+      <td>
+        <%= actions_menu link_to('Show', dungeon),
+                         link_to('Edit', edit_dungeon_path(dungeon)),
+                         link_to('Destroy', dungeon, :confirm => 'Are you sure?', :method => :delete) %>
+      </td>
+    <% end %>
+  <% end %>
+<% else %>
+  <tr class="empty">
+    <td colspan="4">No dungeons stored, <%= link_to 'why not create one?', new_dungeon_path %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= actions_menu link_to('New Dungeon', new_dungeon_path) %>

@@ -1,0 +1,16 @@
+<h1>Trap: <%= @trap.name %></h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Base damage caused:</b>
+  <%= @trap.base_damage_caused %>
+</p>
+
+<p>
+  <b>Installed in:</b>
+  <%= dungeons_a_trap_is_installed_in(@trap) %>
+</p>
+
+<%= actions_menu link_to('Edit', edit_trap_path(@trap)),
+                 link_to('Back', traps_path) %>

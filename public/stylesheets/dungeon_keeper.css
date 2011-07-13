@@ -1,0 +1,16 @@
+ul.actions {
+  list-style: none;
+  height: auto;
+  padding: 0px;
+  margin: 0px;
+  clear: both;
+}
+ul.actions>li {
+  float: left;
+}
+ul.actions>li:after {
+  content: "|";
+}
+ul.actions>li:last-child:after {
+  content: none;
+}

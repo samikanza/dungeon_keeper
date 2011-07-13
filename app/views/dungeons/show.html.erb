@@ -1,0 +1,31 @@
+<h1>Dungeon: <%= @dungeon.name %></h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Levels:</b>
+  <%= @dungeon.levels %>
+</p>
+
+<p>
+  <b>Evil Wizard:</b>
+  <%= show_evil_wizard_for_dungeon(@dungeon) %>
+</p>
+
+<p>
+  <b>Experience points:</b>
+  <%= @dungeon.experience_points %>
+</p>
+
+<p>
+  <b>Traps:</b>
+  <% if @dungeon.traps.any? %>
+    <%= render :partial => 'installed_trap', :collection => @dungeon.traps %>
+  <% else %>
+    No traps installed in this dungeon, <%= link_to 'why not add one?', new_dungeon_trap_installation_path(@dungeon) %>
+  <% end %>
+</p>
+
+<%= actions_menu link_to('Edit', edit_dungeon_path(@dungeon)),
+                 link_to('Install a new trap', new_dungeon_trap_installation_path(@dungeon)),
+                 link_to('Back', dungeons_path) %>

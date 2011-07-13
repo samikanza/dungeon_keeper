@@ -1,0 +1,6 @@
+<h1>Editing Dungeon: <%= @dungeon.name %></h1>
+
+<%= render 'form' %>
+
+<%= actions_menu link_to('Show', @dungeon),
+                 link_to('Back', dungeons_path) %>

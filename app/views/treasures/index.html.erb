@@ -1,0 +1,25 @@
+<h1>Listing treasures</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Value</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @treasures.each do |treasure| %>
+  <tr>
+    <td><%= treasure.name %></td>
+    <td><%= treasure.value %></td>
+    <td><%= link_to 'Show', treasure %></td>
+    <td><%= link_to 'Edit', edit_treasure_path(treasure) %></td>
+    <td><%= link_to 'Destroy', treasure, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Treasure', new_treasure_path %>

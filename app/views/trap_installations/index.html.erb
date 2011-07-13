@@ -1,0 +1,34 @@
+<h1>Listing Trap Installations <%= scoped_parent_for_title %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= dungeon_or_trap_inverse_of_scope %></th>
+      <th>Level</th>
+      <th>Size</th>
+      <th>Fake</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+<% if @trap_installations.any? %>
+  <% @trap_installations.each do |trap_installation| %>
+    <%= content_tag_for(:tr, trap_installation) do %>
+      <td><%= link_to_dungeon_or_trap_inverse_of_scope(trap_installation) %></td>
+      <td><%= trap_installation.level %></td>
+      <td><%= trap_installation.size %></td>
+      <td><%= yes_or_no(trap_installation.fake) %></td>
+      <td><%= actions_menu link_to('Show', [@scope, trap_installation]),
+                           link_to('Edit', [:edit, @scope, trap_installation]),
+                           link_to('Destroy', [@scope, trap_installation], :confirm => 'Are you sure?', :method => :delete) %></td>
+    <% end %>
+  <% end %>
+<% else %>
+    <tr class="empty">
+      <td colspan="6">No trap installations stored for this <%= scoped_parent_type %>, <%= link_to 'why not add one?', [:new, @scope, :trap_installation] %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= actions_menu link_to('New Trap installation', [:new, @scope, :trap_installation]) %>

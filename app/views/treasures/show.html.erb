@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @treasure.name %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%= @treasure.value %>
+</p>
+
+
+<%= link_to 'Edit', edit_treasure_path(@treasure) %> |
+<%= link_to 'Back', treasures_path %>
